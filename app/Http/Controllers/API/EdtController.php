@@ -39,9 +39,7 @@ class EdtController extends Controller
             $query->where('idSalle', $request->salle_id);
         }
         
-        if ($request->has('creneau_id')) {
-            $query->where('idCreneau', $request->creneau_id);
-        }
+       
         
         if ($request->has('filiere_id')) {
             $query->whereHas('filieres', function ($q) use ($request) {
