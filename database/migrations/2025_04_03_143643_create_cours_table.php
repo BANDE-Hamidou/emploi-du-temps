@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,9 +12,14 @@ return new class extends Migration
     {
         Schema::create('cours', function (Blueprint $table) {
             $table->id();
+            $table->string('titre');
             $table->foreignId('idMatiere')->constrained('matieres')->onDelete('cascade');
-            // $table->foreignId('idPers')->constrained('personnes')->onDelete('cascade');
+            $table->boolean('estFait')->default(false);
+            $table->text('commentaire')->nullable();
+            $table->unsignedBigInteger('validePar')->nullable();
+            $table->timestamp('dateValidation')->nullable();
             $table->timestamps();
+            
         });
     }
 

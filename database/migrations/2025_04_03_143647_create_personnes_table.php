@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('personnes', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');           // Corrigé: strings -> string
-            $table->string('prenom');        // Corrigé: strings -> string
+            $table->string('nom');           
+            $table->string('prenom');        
             $table->date('date');
-            $table->enum('sexe', ['M', 'F']); // Utiliser enum pour limiter les valeurs possibles
-            $table->string('tel');           // Corrigé: strings -> string
-            $table->string('email');         // Corrigé: strings -> string
+            $table->enum('sexe', ['M', 'F']); 
+            $table->string('tel');           
+            $table->string('email');         
             $table->enum('profil', ['admin', 'enseignant', 'etudiant', 'parent', 'responsable']);
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignId('filiere_id')->nullable()->constrained('filieres')->onDelete('set null');
             $table->foreignId('matiere_id')->nullable()->constrained('matieres')->onDelete('set null');
             $table->timestamps();
